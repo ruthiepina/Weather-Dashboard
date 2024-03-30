@@ -1,105 +1,47 @@
-smain<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <link
-         href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
          rel="stylesheet"
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
          crossorigin="anonymous"
       />
       <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet" />
-      <link rel="stylesheet" href="assets/css/style.css" />
+      <link rel="stylesheet" href="./assets/css/style.css" />
       <title>Weather Dashboard</title>
    </head>
 
-   <body>
-      <header>
+   <body class="flex-column min-100-vh">
+      <header class="hero">
          <h1 class="title"><i class="fa-solid fa-sun-cloud"></i>Weather Dashboard</h1>
          <p>Search for a city and see the weather forecast</p>
       </header>
 
-      <main class="flex-row justify-space-between">
+      <main class="flex-row justify-space-between col-12 col-md-4">
          <div>
-            <section id="left-side" class="left-side">
-               <div class="card">
-                  <h3 class="card-header">Search By City:</h3>
-                  <form id="user-form" class="card-body">
-                     <label class="form-label" for="cityname">Type in a city name!</label>
-                     <input class="form-input" name="cityname" id="cityname" type="text" autofocus="true" />
-                     <button class="btn" type="submit">Search</button>
-                  </form>
-                  <div class="card" id="city-buttons">
-                     <h3 class="card-header">Previous Cities</h3>
-                     <button class="btn" data-city="javascript">Previous City 01</button>
-                     <button class="btn" data-city="javascript">Previous City 02</button>
-                     <button class="btn" data-city="javascript">Previous City 03</button>
-                     <button class="btn" data-city="javascript">Previous City 04</button>
-                     <button class="btn" data-city="javascript">Previous City 05</button>
-                     <button class="btn" data-city="javascript">Previous City 06</button>
-                     <button class="btn" data-city="javascript">Previous City 07</button>
-                     <button class="btn" data-city="javascript">Previous City 08</button>
-                  </div>
+            <div class="card">
+               <h3 class="card-header">Search By City:</h3>
+               <form id="user-form" class="card-body">
+                  <label class="form-label" for="cityname">Type in a city name!</label>
+                  <input class="form-input" name="cityname" id="cityname" type="text" autofocus="true" />
+                  <button class="btn" type="submit">Search</button>
+               </form>
+               <h3 class="card-header">Previous Cities</h3>
+               <div class="card-body" id="city-buttons">
+                  <button class="btn" data-language="javascript">Previous City 01</button>
+                  <button class="btn" data-language="javascript">Previous City 02</button>
+                  <button class="btn" data-language="javascript">Previous City 03</button>
                </div>
-            </section>
-            <section id="right-side" class="right-side">
-               <div class="card-deck">
-                  <div class="card">
-                     <img src="..." class="card-img-top" alt="..." />
-                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                           This is a longer card with supporting text below as a natural lead-in to additional content. This content is a
-                           little bit longer.
-                        </p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                  </div>
-                  <div class="card">
-                     <img src="..." class="card-img-top" alt="..." />
-                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                  </div>
-                  <div class="card">
-                     <img src="..." class="card-img-top" alt="..." />
-                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                           This is a wider card with supporting text below as a natural lead-in to additional content. This card has even
-                           longer content than the first to show that equal height action.
-                        </p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                  </div>
-                  <div class="card">
-                     <img src="..." class="card-img-top" alt="..." />
-                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                           This is a wider card with supporting text below as a natural lead-in to additional content. This card has even
-                           longer content than the first to show that equal height action.
-                        </p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                  </div>
-                  <div class="card">
-                     <img src="..." class="card-img-top" alt="..." />
-                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                           This is a wider card with supporting text below as a natural lead-in to additional content. This card has even
-                           longer content than the first to show that equal height action.
-                        </p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                     </div>
-                  </div>
-               </div>
-            </section>
+            </div>
+         </div>
+
+         <div class="col-12 col-md-8">
+            <h2 class="subtitle">Salt Lake City: <span id="repo-search-term"></span></h2>
+            <div class="list-group" id="repos-container"></div>
          </div>
       </main>
       <script src="https://kit.fontawesome.com/dbab6275a0.js" crossorigin="anonymous"></script>
