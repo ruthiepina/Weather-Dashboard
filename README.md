@@ -45,15 +45,15 @@
 
 ## Functionality
 
-The following screenshot demonstrates the application functionality: ![Weather Dashboard]()
+The following screenshot demonstrates the application functionality: ![Weather Dashboard](./assets/images/final-example.PNG)
 
 ## Access
 
 -  The URL of the functional, deployed application:
--  [Weather Dashboard Live Page]()
+-  [Weather Dashboard Live Page](https://ruthiepina.github.io/Weather-Dashboard/)
 
 -  The URL of the GitHub repository:
--  [Weather Dashboard Repo]()
+-  [Weather Dashboard Repo](https://github.com/ruthiepina/Weather-Dashboard)
 
 ## Credits
 
