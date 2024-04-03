@@ -4,19 +4,15 @@ var searchBtn = document.getElementById("search-btn");
 var fiveDayForecastEl = document.querySelector("#five-day-forecast");
 
 var getLocation = function (city) {
-   console.log("INSIDE GEOLOCATION");
    var geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${API}`;
    fetch(geoUrl)
       .then((response) => response.json())
       .then((data) => {
-         console.log("data:", data[0]);
          var lat = data[0].lat;
          var lon = data[0].lon;
 
          let cityName = data[0].name;
-         console.log("cityName:", cityName);
 
-         console.log("cityName", cityHistory.indexOf(cityName));
          if (cityHistory.indexOf(cityName) === -1) {
             cityHistory.push(cityName);
             localStorage.setItem("previousCities", JSON.stringify(cityHistory));
@@ -32,8 +28,6 @@ var getWeather = function (lat, lon) {
    fetch(weatherUrl)
       .then((response) => response.json())
       .then((data) => {
-         console.log("data from weatherUrl", data);
-
          const date = new Date().toJSON().slice(0, 10);
          var pdate = document.createElement("p");
          pdate.textContent = date;
@@ -52,7 +46,6 @@ var getWeather = function (lat, lon) {
 
          document.getElementById("current-weather").append(pdate, imgWeather, ptemp, phum, pwind);
          document.getElementById("current-city").textContent = data.name;
-         // search history display
          displayCityHistory();
       });
    getForecast(lat, lon);
@@ -65,8 +58,6 @@ var getForecast = function (lat, lon) {
    fetch(forecastUrl)
       .then((response) => response.json())
       .then((data) => {
-         console.log("forecast", data);
-
          var forecastArray = [];
 
          for (var i = 0; i < data.list.length; i++) {
@@ -75,7 +66,6 @@ var getForecast = function (lat, lon) {
                forecastArray.push(data.list[i]);
             }
          }
-         console.log("forcastArray", forecastArray);
 
          for (var i = 0; i < forecastArray.length; i++) {
             var date = forecastArray[i].dt_txt.split(" ")[0];
@@ -111,7 +101,6 @@ var getForecast = function (lat, lon) {
 var displayCityHistory = function () {
    var cityHistoryEl = document.getElementById("city-history");
    cityHistoryEl.innerHTML = "";
-   console.log("cityHistory", cityHistory);
    for (var i = 0; i < cityHistory.length; i++) {
       var button = document.createElement("button");
       button.classList.add("city-history-btn");
@@ -119,7 +108,6 @@ var displayCityHistory = function () {
       button.setAttribute("value", cityHistory[i]);
 
       button.addEventListener("click", function () {
-         console.log("this", this);
          getLocation(this.value);
       });
 
@@ -129,8 +117,6 @@ var displayCityHistory = function () {
 displayCityHistory();
 
 searchBtn.addEventListener("click", () => {
-   console.log("**********************************************");
    let cityName = document.getElementById("cityInput").value;
-   console.log("cityName:", cityName);
    getLocation(cityName);
 });
